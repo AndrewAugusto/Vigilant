@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.ObterMetricas;
+import models.LoginModel;
 import models.TamanhoBancos;
 
 import java.awt.event.ActionListener;
@@ -27,28 +28,17 @@ public class TamanhoBancosView extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	
-	ObterMetricas metricas = new ObterMetricas();
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TamanhoBancosView frame = new TamanhoBancosView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
+	 * @param login 
 	 */
-	public TamanhoBancosView() {
+	public TamanhoBancosView(LoginModel login) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -76,7 +66,7 @@ public class TamanhoBancosView extends JFrame {
 		btnMostrarTamanhoBancos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<TamanhoBancos> lista = new ArrayList<TamanhoBancos>();
-
+				ObterMetricas metricas = new ObterMetricas(login);
 				lista = metricas.TamanhoBanco();
 				
 				String nome;
@@ -109,7 +99,7 @@ public class TamanhoBancosView extends JFrame {
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Principal telaPrinc = new Principal();
+				Principal telaPrinc = new Principal(login);
 				telaPrinc.setVisible(true);
 				dispose();
 			}

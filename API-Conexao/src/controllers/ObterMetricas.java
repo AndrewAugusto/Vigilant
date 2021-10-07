@@ -1,11 +1,17 @@
 package controllers;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import models.LoginModel;
 import models.SelectMaisDemoradasModel;
 import models.SelectsChamadas1000xModel;
 import models.SelectsMaisDemoradasMediaModel;
@@ -14,15 +20,53 @@ import models.TamanhoTabelasModel;
 
 public class ObterMetricas {
 	
-	Conexao conex = new Conexao();
 	
+	private String driver = "org.postgresql.Driver";
+	private String caminho;
+	private String porta;
+	private String banco;
+	private String usuario;
+	private String senha;
+	public Connection  con;
+	
+	public ObterMetricas(LoginModel login) {
+		usuario = login.getUsuario();
+		senha = login.getSenha();
+		banco = login.getBanco();
+		porta = login.getPorta();
+		
+		caminho = "jdbc:postgresql://localhost:" + porta + "/" + banco;
+	}
+	
+	public void iniciarConexao() {
+		// Necessário alterar a url, usuario e senha para o banco que será conectado
+		try {
+			System.setProperty("jdbc.Drivers",driver );
+			con = DriverManager.getConnection(caminho,usuario,senha);
+				//JOptionPane.showMessageDialog(null, "Conexão efetuada com sucesso!");
+		}
+		catch(SQLException ex){
+			JOptionPane.showMessageDialog(null, "Erro de conexão: \n"+ex.getMessage());
+		}
+
+	}
+	
+	public void desconecta() {
+		try {
+			con.close();
+		}
+		catch(SQLException ex) {
+			JOptionPane.showMessageDialog(null, "Erro ao tentar desconectar: \n"+ex.getMessage());
+		}
+	}
+
 	public ArrayList<TamanhoBancos> TamanhoBanco() {
-		conex.iniciarConexao();
+		iniciarConexao();
 		
 		String sql = "SELECT pg_database.datname, pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database;";
 		
 		try {
-			PreparedStatement pesquisa = conex.con.prepareStatement(sql);
+			PreparedStatement pesquisa = con.prepareStatement(sql);
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<TamanhoBancos> lista = new ArrayList<TamanhoBancos>();
 			
@@ -41,13 +85,13 @@ public class ObterMetricas {
 			return null;
 		}
 		finally {
-			conex.desconecta();
+			desconecta();
 		}
 		
 	}
 	
 	public ArrayList<TamanhoTabelasModel> TamanhoTabelas() {
-		conex.iniciarConexao();
+		iniciarConexao();
 		
 		String sql = "SELECT esquema, tabela,\r\n"
 				+ "       pg_size_pretty(pg_relation_size(esq_tab)) AS tamanho,\r\n"
@@ -61,7 +105,7 @@ public class ObterMetricas {
 				+ " ORDER BY pg_total_relation_size(esq_tab) DESC;";
 		
 		try {
-			PreparedStatement pesquisa = conex.con.prepareStatement(sql);
+			PreparedStatement pesquisa = con.prepareStatement(sql);
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<TamanhoTabelasModel> lista = new ArrayList<TamanhoTabelasModel>();
 			
@@ -78,20 +122,20 @@ public class ObterMetricas {
 			return null;
 		}
 		finally {
-			conex.desconecta();
+			desconecta();
 		}
 		
 	}
 	
 	public ArrayList<SelectsChamadas1000xModel> SelectsChamadas1000x() {
-		conex.iniciarConexao();
+		iniciarConexao();
 		
 		String sql = "SELECT calls, query, total_exec_time\r\n"
 				+ "FROM pg_stat_statements\r\n"
 				+ "where calls > 1000;";
 		
 		try {
-			PreparedStatement pesquisa = conex.con.prepareStatement(sql);
+			PreparedStatement pesquisa = con.prepareStatement(sql);
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<SelectsChamadas1000xModel> lista = new ArrayList<SelectsChamadas1000xModel>();
 			Double num;
@@ -112,14 +156,14 @@ public class ObterMetricas {
 			return null;
 		}
 		finally {
-			conex.desconecta();
+			desconecta();
 		}
 		
 		
 	}
 	
 	public ArrayList<SelectMaisDemoradasModel> SelectMaisDemoradas() {
-		conex.iniciarConexao();
+		iniciarConexao();
 		
 		String sql = "SELECT total_exec_time, query\r\n"
 				+ "FROM pg_stat_statements\r\n"
@@ -127,7 +171,7 @@ public class ObterMetricas {
 				+ "DESC LIMIT 10;";
 		
 		try {
-			PreparedStatement pesquisa = conex.con.prepareStatement(sql);
+			PreparedStatement pesquisa = con.prepareStatement(sql);
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<SelectMaisDemoradasModel> lista = new ArrayList<SelectMaisDemoradasModel>();
 			Double num;
@@ -147,13 +191,13 @@ public class ObterMetricas {
 			return null;
 		}
 		finally {
-			conex.desconecta();
+			desconecta();
 		}
 		
 	}
 	
 	public ArrayList<SelectsMaisDemoradasMediaModel> SelectsMaisDemoradasMedia() {
-		conex.iniciarConexao();
+		iniciarConexao();
 		
 		String sql = "SELECT mean_exec_time, query\r\n"
 				+ "FROM pg_stat_statements\r\n"
@@ -161,7 +205,7 @@ public class ObterMetricas {
 				+ "DESC LIMIT 10;";
 		
 		try {
-			PreparedStatement pesquisa = conex.con.prepareStatement(sql);
+			PreparedStatement pesquisa = con.prepareStatement(sql);
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<SelectsMaisDemoradasMediaModel> lista = new ArrayList<SelectsMaisDemoradasMediaModel>();
 			Double num;
@@ -181,7 +225,7 @@ public class ObterMetricas {
 			return null;
 		}
 		finally {
-			conex.desconecta();
+			desconecta();
 		}
 		
 	}

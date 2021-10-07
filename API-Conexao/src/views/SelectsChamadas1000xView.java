@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.ObterMetricas;
+import models.LoginModel;
 import models.SelectsChamadas1000xModel;
 import models.TamanhoBancos;
 
@@ -26,28 +27,16 @@ public class SelectsChamadas1000xView extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	
-	ObterMetricas metricas = new ObterMetricas();
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SelectsChamadas1000xView frame = new SelectsChamadas1000xView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
+	 * @param login 
 	 */
-	public SelectsChamadas1000xView() {
+	public SelectsChamadas1000xView(LoginModel login) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -76,7 +65,7 @@ public class SelectsChamadas1000xView extends JFrame {
 		btnMostrarTamanhoBancos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<SelectsChamadas1000xModel> lista = new ArrayList<SelectsChamadas1000xModel>();
-
+				ObterMetricas metricas = new ObterMetricas(login);
 				lista = metricas.SelectsChamadas1000x();
 				
 				String calls;
@@ -113,7 +102,7 @@ public class SelectsChamadas1000xView extends JFrame {
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Principal telaPrinc = new Principal();
+				Principal telaPrinc = new Principal(login);
 				telaPrinc.setVisible(true);
 				dispose();
 			}

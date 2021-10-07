@@ -3,6 +3,7 @@ package views;
 import java.awt.BorderLayout;
 import controllers.Conexao;
 import controllers.ObterMetricas;
+import models.LoginModel;
 import models.TamanhoBancos;
 
 import java.awt.EventQueue;
@@ -27,30 +28,20 @@ import javax.swing.table.DefaultTableModel;
 
 public class Principal extends JFrame {
 	
-	ObterMetricas metricas = new ObterMetricas();
+
 	
 	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Principal frame = new Principal();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
 
 	/**
 	 * Create the frame.
+	 * @param login 
 	 */
-	public Principal() {
+	public Principal(LoginModel login) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 582, 424);
 		
@@ -64,7 +55,7 @@ public class Principal extends JFrame {
 		mntmTamanhoBancos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				TamanhoBancosView tela = new TamanhoBancosView();
+				TamanhoBancosView tela = new TamanhoBancosView(login);
 				tela.setVisible(true);
 				dispose();
 				
@@ -76,7 +67,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmTamanhoTabelas = new JMenuItem("Tamanho Tabelas");
 		mntmTamanhoTabelas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TamanhoTabelasView tela = new TamanhoTabelasView();
+				TamanhoTabelasView tela = new TamanhoTabelasView(login);
 				tela.setVisible(true);
 				dispose();
 			}
@@ -86,7 +77,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmInstrucoes1000x = new JMenuItem("Instru\u00E7\u00F5es Chamadas Mais de 1000x");
 		mntmInstrucoes1000x.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectsChamadas1000xView tela = new SelectsChamadas1000xView();
+				SelectsChamadas1000xView tela = new SelectsChamadas1000xView(login);
 				tela.setVisible(true);
 				dispose();
 			}
@@ -96,7 +87,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmIstrucoesMaisDemoradas = new JMenuItem("Instru\u00E7\u00F5es Mais Demoradas");
 		mntmIstrucoesMaisDemoradas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectsMaisDemoradasView tela = new SelectsMaisDemoradasView();
+				SelectsMaisDemoradasView tela = new SelectsMaisDemoradasView(login);
 				tela.setVisible(true);
 				dispose();
 			}
@@ -106,7 +97,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmInstrucoesMaisDemoradasMedia = new JMenuItem("Instru\u00E7\u00F5es Mais Demoradas Em Media");
 		mntmInstrucoesMaisDemoradasMedia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SelectsMaisDemoradasMediaView tela = new SelectsMaisDemoradasMediaView();
+				SelectsMaisDemoradasMediaView tela = new SelectsMaisDemoradasMediaView(login);
 				tela.setVisible(true);
 				dispose();
 			}
