@@ -52,10 +52,10 @@ public class SelectsMaisDemoradasMediaView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Query", "Tempo Total M\u00E9dio"
+				"Data", "Query", "Tempo Total M\u00E9dio"
 			}
 		));
-		table.getColumnModel().getColumn(1).setPreferredWidth(175);
+		table.getColumnModel().getColumn(2).setPreferredWidth(175);
 		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
@@ -72,6 +72,7 @@ public class SelectsMaisDemoradasMediaView extends JFrame {
 				
 				String query;
 				String tempo;
+				String data;
 				
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				
@@ -86,8 +87,9 @@ public class SelectsMaisDemoradasMediaView extends JFrame {
 				{		
 					query = lista.get(i).getQuery();
 					tempo = lista.get(i).getTempoMedio();
+					data = lista.get(i).getData();
 					
-					model.addRow(new String[] {query,tempo});
+					model.addRow(new String[] {data,query,tempo});
 				}
 			}
 		});

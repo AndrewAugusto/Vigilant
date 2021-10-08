@@ -51,7 +51,7 @@ public class TamanhoTabelasView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Nome", "Tamanho"
+				"Data", "Nome", "Tamanho"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -68,6 +68,7 @@ public class TamanhoTabelasView extends JFrame {
 				
 				String nome;
 				String tamanho;
+				String data;
 				
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				
@@ -79,10 +80,11 @@ public class TamanhoTabelasView extends JFrame {
 				
 				//Adiciona as linhas do array retornado na tabela
 				for(int i = 0; i < lista.size(); i++)
-				{		
+				{	
+					data = lista.get(i).getData();
 					nome = lista.get(i).getNome();
 					tamanho = lista.get(i).getTamanhoTotal();
-					model.addRow(new String[] {nome, tamanho});
+					model.addRow(new String[] {data,nome, tamanho});
 				}
 			}
 		});

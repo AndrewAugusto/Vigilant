@@ -52,10 +52,10 @@ public class SelectsChamadas1000xView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Chamadas", "Query", "Tempo de execu\u00E7\u00E3o total"
+				"Data", "Chamadas", "Query", "Tempo de execu\u00E7\u00E3o total"
 			}
 		));
-		table.getColumnModel().getColumn(2).setPreferredWidth(144);
+		table.getColumnModel().getColumn(3).setPreferredWidth(144);
 		scrollPane.setViewportView(table);
 		
 		JPanel panel = new JPanel();
@@ -71,6 +71,7 @@ public class SelectsChamadas1000xView extends JFrame {
 				String calls;
 				String query;
 				String tempo;
+				String data;
 				
 				
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -84,11 +85,12 @@ public class SelectsChamadas1000xView extends JFrame {
 				//Adiciona as linhas do array retornado na tabela
 				for(int i = 0; i < lista.size(); i++)
 				{		
+					data = lista.get(i).getDate();
 					calls = lista.get(i).getCalls();
 					query = lista.get(i).getQuery();
 					tempo = lista.get(i).getTotal_exec_time();
 					
-					model.addRow(new String[] {calls, query,tempo});
+					model.addRow(new String[] {data,calls, query,tempo});
 				}
 			}
 		});

@@ -3,6 +3,13 @@ package models;
 public class TamanhoTabelasModel {
 	String nome;
 	String tamanhoTotal;
+	String data;
+	public String getData() {
+		return data;
+	}
+	public void setData(String data) {
+		this.data = data;
+	}
 	public String getNome() {
 		return nome;
 	}

@@ -52,7 +52,7 @@ public class SelectsMaisDemoradasView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Query", "Tempo Total de execu\u00E7\u00E3o"
+				"Data", "Query", "Tempo Total de execu\u00E7\u00E3o"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -69,6 +69,7 @@ public class SelectsMaisDemoradasView extends JFrame {
 				
 				String query;
 				String tempo;
+				String data;
 				
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				
@@ -83,8 +84,9 @@ public class SelectsMaisDemoradasView extends JFrame {
 				{		
 					query = lista.get(i).getQuery();
 					tempo = lista.get(i).getTempo();
+					data = lista.get(i).getData();
 					
-					model.addRow(new String[] {query,tempo});
+					model.addRow(new String[] {data, query,tempo});
 				}
 			}
 		});

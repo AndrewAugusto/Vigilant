@@ -54,7 +54,7 @@ public class TamanhoBancosView extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"Nome", "Tamanho"
+				"Data", "Nome", "Tamanho"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -71,6 +71,7 @@ public class TamanhoBancosView extends JFrame {
 				
 				String nome;
 				String tamanho;
+				String data;
 				
 				DefaultTableModel model = (DefaultTableModel) table.getModel();
 				
@@ -85,7 +86,8 @@ public class TamanhoBancosView extends JFrame {
 				{		
 					nome = lista.get(i).getNome();
 					tamanho = lista.get(i).getTamanho();
-					model.addRow(new String[] {nome, tamanho});
+					data = lista.get(i).getData();
+					model.addRow(new String[] {data, nome, tamanho});
 				}
 			}
 		});

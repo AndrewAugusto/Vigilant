@@ -63,7 +63,7 @@ public class ObterMetricas {
 	public ArrayList<TamanhoBancos> TamanhoBanco() {
 		iniciarConexao();
 		
-		String sql = "SELECT pg_database.datname, pg_size_pretty(pg_database_size(pg_database.datname)) AS size FROM pg_database;";
+		String sql = "SELECT * FROM estatisticas";
 		
 		try {
 			PreparedStatement pesquisa = con.prepareStatement(sql);
@@ -73,8 +73,9 @@ public class ObterMetricas {
 			while(result.next()) {
 				TamanhoBancos tamBan = new TamanhoBancos();
 				
-				tamBan.setNome(result.getString("datname"));
-				tamBan.setTamanho(result.getString("size"));
+				tamBan.setNome(result.getString("db_name"));
+				tamBan.setTamanho(result.getString("db_size"));
+				tamBan.setData(result.getString("query_date_time"));
 				
 				lista.add(tamBan);
 			}
@@ -93,16 +94,7 @@ public class ObterMetricas {
 	public ArrayList<TamanhoTabelasModel> TamanhoTabelas() {
 		iniciarConexao();
 		
-		String sql = "SELECT esquema, tabela,\r\n"
-				+ "       pg_size_pretty(pg_relation_size(esq_tab)) AS tamanho,\r\n"
-				+ "       pg_size_pretty(pg_total_relation_size(esq_tab)) AS tamanho_total\r\n"
-				+ "  FROM (SELECT tablename AS tabela,\r\n"
-				+ "               schemaname AS esquema,\r\n"
-				+ "               schemaname||'.'||tablename AS esq_tab\r\n"
-				+ "          FROM pg_catalog.pg_tables\r\n"
-				+ "         WHERE schemaname NOT\r\n"
-				+ "            IN ('pg_catalog', 'information_schema', 'pg_toast') ) AS x\r\n"
-				+ " ORDER BY pg_total_relation_size(esq_tab) DESC;";
+		String sql = "SELECT * FROM estatisticas_table_size";
 		
 		try {
 			PreparedStatement pesquisa = con.prepareStatement(sql);
@@ -112,8 +104,9 @@ public class ObterMetricas {
 			while(result.next()) {
 				TamanhoTabelasModel tamTab = new TamanhoTabelasModel();
 				
-				tamTab.setNome(result.getString("tabela"));
-				tamTab.setTamanhoTotal(result.getString("tamanho_total"));
+				tamTab.setNome(result.getString("tab_name"));
+				tamTab.setTamanhoTotal(result.getString("tab_size"));
+				tamTab.setData(result.getString("query_date_time"));
 				lista.add(tamTab);
 			}
 			return lista;
@@ -130,9 +123,7 @@ public class ObterMetricas {
 	public ArrayList<SelectsChamadas1000xModel> SelectsChamadas1000x() {
 		iniciarConexao();
 		
-		String sql = "SELECT calls, query, total_exec_time\r\n"
-				+ "FROM pg_stat_statements\r\n"
-				+ "where calls > 1000;";
+		String sql = "SELECT * FROM estatisticas_call_query";
 		
 		try {
 			PreparedStatement pesquisa = con.prepareStatement(sql);
@@ -144,9 +135,10 @@ public class ObterMetricas {
 				SelectsChamadas1000xModel selects = new SelectsChamadas1000xModel();
 				
 				selects.setCalls(result.getString("calls"));
-				selects.setQuery(result.getString("query"));
+				selects.setQuery(result.getString("query_name"));
+				selects.setDate(result.getString("query_date_time"));
 				DecimalFormat df = new DecimalFormat("####.00");
-				num = Double.parseDouble(result.getString("total_exec_time"));
+				num = Double.parseDouble(result.getString("time_exec"));
 				selects.setTotal_exec_time(df.format(num).toString() );
 				lista.add(selects);
 			}
@@ -165,10 +157,8 @@ public class ObterMetricas {
 	public ArrayList<SelectMaisDemoradasModel> SelectMaisDemoradas() {
 		iniciarConexao();
 		
-		String sql = "SELECT total_exec_time, query\r\n"
-				+ "FROM pg_stat_statements\r\n"
-				+ "ORDER BY total_exec_time\r\n"
-				+ "DESC LIMIT 10;";
+		String sql = "\r\n"
+				+ "SELECT * FROM estatisticas_time";
 		
 		try {
 			PreparedStatement pesquisa = con.prepareStatement(sql);
@@ -179,9 +169,10 @@ public class ObterMetricas {
 			while(result.next()) {
 				SelectMaisDemoradasModel selects = new SelectMaisDemoradasModel();
 				
-				selects.setQuery(result.getString("query"));
+				selects.setQuery(result.getString("calls"));
+				selects.setData(result.getString("query_date_time"));
 				DecimalFormat df = new DecimalFormat("####.00");
-				num = Double.parseDouble(result.getString("total_exec_time"));
+				num = Double.parseDouble(result.getString("time_exec"));
 				selects.setTempo(df.format(num).toString() );
 				lista.add(selects);
 			}
@@ -199,10 +190,7 @@ public class ObterMetricas {
 	public ArrayList<SelectsMaisDemoradasMediaModel> SelectsMaisDemoradasMedia() {
 		iniciarConexao();
 		
-		String sql = "SELECT mean_exec_time, query\r\n"
-				+ "FROM pg_stat_statements\r\n"
-				+ "ORDER BY mean_exec_time\r\n"
-				+ "DESC LIMIT 10;";
+		String sql = "SELECT * FROM estatisticas_time_average";
 		
 		try {
 			PreparedStatement pesquisa = con.prepareStatement(sql);
@@ -213,9 +201,10 @@ public class ObterMetricas {
 			while(result.next()) {
 				SelectsMaisDemoradasMediaModel selects = new SelectsMaisDemoradasMediaModel();
 				
-				selects.setQuery(result.getString("query"));
+				selects.setQuery(result.getString("calls"));
+				selects.setData(result.getString("query_date_time"));
 				DecimalFormat df = new DecimalFormat("####.00");
-				num = Double.parseDouble(result.getString("mean_exec_time"));
+				num = Double.parseDouble(result.getString("time_exec"));
 				selects.setTempoMedio(df.format(num).toString() );
 				lista.add(selects);
 			}
