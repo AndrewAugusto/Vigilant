@@ -64,11 +64,11 @@
 	<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank">
 </a> 
 
-:computer: Vitor Luiz Rofrigues de Lima (Dev Team) - 
-<a href="https://github.com/VilRL">
-        <img  src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white&link=mailto:https://github.com/VilRL">
+:computer: Joice Elen Pereira Teixeira (Dev Team) - 
+<a href="https://github.com/jojoka1">
+        <img  src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white&link=mailto:https://github.com/jojoka1">
 </a>
-<a href="https://www.linkedin.com/in/vitor-lima-36a1201a2/" target="_blank">
+<a href="https://www.linkedin.com/in/joice-elen-2a6309207/" target="_blank">
 	<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank">
 </a> 
 
@@ -110,7 +110,7 @@ SGBDs, databases e na sua infra (Servidores)
  <img title="Eclipse" height="120" src="https://github.com/imagemrepositorio/Imagens/blob/main/Vigilant/Sem%20título.png">
 
 #
-	  
+
 ## :hourglass_flowing_sand: Planejamento de Entregas
 >  **SPRINT 1**
 
