@@ -1,0 +1,118 @@
+#Preparação do sistema para execução do programa Vigilant baseada no SO Windows:
+==================================================================================================================================================================================
+#Etapa 1 - Criação da extensão pg_stat_statements:
+-No diretório de instalação do PostgreSQL encontre o arquivo "postgresql.conf";
+-Dentro do arquivo busque pelo intem "# - Shared Library Preloading -";
+-Altere o campo "shared_preload_libraries" retirando o sinal de comentário e adicionando 'pg_stat_statements';
+	==> shared_preload_libraries = 'pg_stat_statements'
+
+-Abra o pgAdmin e conecte-se ao banco de dados;
+-No Query Tool digite "CREATE EXTENSION pg_stat_statement;"
+-Reinicie o serviço através do gerenciador de serviços do SO.
+==================================================================================================================================================================================
+#Etapa 2 - Criação de Tabelas:
+-Conecte-se ao banco de dados e execute os scripts;
+
+==> CREATE TABLE estatisticas(id serial NOT NULL, db_name varchar(30), db_size text, query_date_time timestamp without time zone);
+
+==> CREATE TABLE estatisticas_table_size(id serial NOT NULL, tab_name varchar(50), tab_size text, query_date_time timestamp without time zone);
+
+==> CREATE TABLE estatisticas_call_query (id serial NOT NULL, calls bigint, query_name varchar(50), time_exec double precision, query_date_time timestamp without time zone);
+
+==> CREATE TABLE estatisticas_time(id serial not null,calls text, time_exec double precision, query_date_time timestamp without time zone);
+
+==> CREATE TABLE estatisticas_time_average(id serial not null,calls text, time_exec double precision, query_date_time timestamp without time zone);
+
+==> CREATE TABLE infos_sys(id serial not null,debaseid oid, debasename name, process integer, username name, appli_conect text, 
+			client_ip inet, client_host text, client_port integer, start_query timestamp without time zone, type_event text, wait_event text, 
+			stats text, querys varchar(50), out_type text, query_date_time timestamp without time zone);
+
+==> CREATE TABLE metrics_archiver (id serial NOT NULL, count_archived bigint, count_failed bigint, last_failed timestamp without time zone, 
+				query_date_time timestamp without time zone);
+
+==> CREATE TABLE stat_database (id serial NOT NULL, datid oid, datname name, xact_commit bigint, xact_rollback bigint, blks_read bigint, 
+				blks_hit bigint, conflicts bigint, deadlocks bigint, query_date_time timestamp without time zone);
+
+==> CREATE TABLE stat_database_conflict (id serial NOT NULL, datid oid, datname name, conflict_lock bigint,
+					conflict_deadlock bigint, query_date_time timestamp without time zone);
+
+==================================================================================================================================================================================
+#Etapa 3 - Criação das rotinas de monitoramento e instalação do pgAgent:
+-Instale o pgAgent usando o Stack Builder-->Add-ons, tools and utilities-->pgAgent
+-Finalizada a instalação abra o pgAdmin, o pgAgente deve ser encontrado na parte inferior do painel esquerdo;
+-Clique com o botão esquerdo sobre o pgAgent e selecione a opção CREATE --> pgAgent Job;
+-Na aba General escolha um nome para a rotina;
+-Na aba Steps adicione uma nova step para cada script a seguir usando o nome entre parêteses como nome da step
+e insira o script na aba Code:
+
+==>(Database Size)
+INSERT INTO estatisticas(db_name, db_size, query_date_time)
+	SELECT pg_database.datname, pg_size_pretty(pg_database_size(pg_database.datname)),current_timestamp(0) AS size 
+	FROM pg_database;
+
+==>(Table Size)
+INSERT INTO estatisticas_table_size(tab_name, tab_size, query_date_time) SELECT tabela,
+		pg_size_pretty(pg_total_relation_size(esq_tab)), current_timestamp(0) AS tamanho
+		FROM (SELECT tablename AS tabela,
+		schemaname||'.'||tablename AS esq_tab
+	    FROM pg_catalog.pg_tables
+		WHERE schemaname NOT
+		IN ('pg_catalog', 'information_schema', 'pg_toast') ) AS x
+		ORDER BY pg_total_relation_size(esq_tab) DESC;
+
+==>(Calls queries)
+INSERT INTO estatisticas_call_query (calls, query_name, time_exec, query_date_time) 
+SELECT calls, SUBSTRING(query 
+		FROM 1 for 50), total_exec_time, current_timestamp(0)
+		FROM pg_stat_statements where calls > 100;
+
+==>(Long time exec)
+INSERT INTO estatisticas_time(calls, time_exec, query_date_time)
+SELECT SUBSTRING(query FROM 1 for 50), total_exec_time, current_timestamp(0) 
+	FROM pg_stat_statements 
+	ORDER BY total_exec_time 
+	DESC LIMIT 10;
+
+==>(Average Time)
+INSERT INTO estatisticas_time_average(calls, time_exec, query_date_time)
+SELECT SUBSTRING(query FROM 1 for 50), mean_exec_time, current_timestamp(0) FROM pg_stat_statements 
+ORDER BY mean_exec_time DESC LIMIT 10;
+
+==>(Informations database) 
+INSERT INTO infos_sys(debaseid, debasename, process, username, appli_conect, client_ip, client_host, client_port, 
+start_query, type_event, wait_event, stats, querys, out_type, query_date_time)
+SELECT datid, datname, pid, usename, application_name, client_addr, client_hostname, client_port, 
+query_start, wait_event_type, wait_event, state, query, backend_type , current_timestamp(0) 
+FROM pg_stat_activity;
+
+==>(Status Archiver)
+INSERT INTO metrics_archiver (count_archived, count_failed, last_failed, query_date_time) 
+SELECT archived_count, failed_count, last_failed_time, current_timestamp(0) FROM pg_stat_archiver;
+
+==>(Database)
+INSERT INTO stat_database (datid, datname, xact_commit, xact_rollback, blks_read, blks_hit, conflicts, deadlocks, query_date_time) 
+SELECT datid, datname, xact_commit, xact_rollback, blks_read, blks_hit, conflicts, deadlocks, current_timestamp(0) FROM pg_stat_database;
+
+==>(Database Conflict)
+INSERT INTO stat_database_conflict (datid, datname, conflict_lock, conflict_deadlock, query_date_time) 
+SELECT datid, datname, confl_lock, confl_deadlock, current_timestamp(0) FROM pg_stat_database_conflicts;
+
+-Na aba Schedules adicione datas e horários para que a rotina seja executada, clique em Save.
+
+==================================================================================================================================================================================
+
+#Execução do .Jar
+
+==> Execute o aplicativo e preencha os seguintes campos:
+* Porta
+* Database
+* Usuário
+* Senha
+
+==> Clique em "Conectar". 
+
+==> Na aba "Métricas" é possível escolher qual métrica o usuário deseja ver.
+
+==> Ao clicar em uma opção, aparecera o botão "Mostrar Dados".
+
+==> Para finalizar o programa basta clicar no botão "Sair".
