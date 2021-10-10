@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="API-Conexao/src"/>
-	<classpathentry kind="src" path="Telas/TelaRegister/src"/>
-	<classpathentry kind="lib" path="API-Conexao/postgresql-42.2.23.jar"/>
-	<classpathentry kind="lib" path="API-Conexao/Vigilant.jar"/>
-	<classpathentry kind="output" path="API-Conexao/bin"/>
-</classpath>
