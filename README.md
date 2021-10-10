@@ -40,6 +40,22 @@
 	<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank">
 </a> 
 
+:computer: Joice Elen Pereira Teixeira (Dev Team) - 
+<a href="https://github.com/jojoka1">
+        <img  src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white&link=mailto:https://github.com/jojoka1">
+</a>
+<a href="https://www.linkedin.com/in/joice-elen-2a6309207/" target="_blank">
+	<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank">
+</a> 
+
+:computer: Romário Araújo Pinheiro (Dev Team) - 
+<a href="https://github.com/RomarioPinheiro">
+        <img  src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white&link=mailto:https://github.com/RomarioPinheiro">
+</a>
+<a href="https://www.linkedin.com/in/romario-ara%C3%BAjo-pinheiro-42422297" target="_blank">
+	<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank">
+</a> 
+
 :computer: Victor Araujo (Dev Team) - 
 <a href="https://github.com/VictorCavichioli">
         <img  src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white&link=mailto:https://github.com/VictorCavichioli">
@@ -56,21 +72,12 @@
 	<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank">
 </a> 
 
-:computer: Romário Araújo Pinheiro (Dev Team) - 
-<a href="https://github.com/RomarioPinheiro">
-        <img  src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white&link=mailto:https://github.com/RomarioPinheiro">
-</a>
-<a href="https://www.linkedin.com/in/romario-ara%C3%BAjo-pinheiro-42422297" target="_blank">
-	<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank">
-</a> 
+#
 
-:computer: Joice Elen Pereira Teixeira (Dev Team) - 
-<a href="https://github.com/jojoka1">
-        <img  src="https://img.shields.io/badge/github-%23100000.svg?&style=for-the-badge&logo=github&logoColor=white&link=mailto:https://github.com/jojoka1">
-</a>
-<a href="https://www.linkedin.com/in/joice-elen-2a6309207/" target="_blank">
-	<img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank">
-</a> 
+### 🖥 Instruções para instalação da aplicação
+ #### Para Download do guia acesse [*Aqui*](https://docs.google.com/document/d/1oIvps0D2kzYn9-PeLGA56a1cMu_ZzaRH/edit?usp=sharing&ouid=106581453796063208866&rtpof=true&sd=true)
+ 
+ #### Para Download do Executavel acesse [*Aqui*](https://drive.google.com/file/d/1d4V-EzHxaxh3G8VkXB5Cu5WinaPU7UZk/view?usp=sharing)
 
 #
 
@@ -110,27 +117,13 @@ SGBDs, databases e na sua infra (Servidores)
  <img title="Eclipse" height="120" src="https://github.com/imagemrepositorio/Imagens/blob/main/Vigilant/Sem%20título.png">
 
 #
+	  
+### 📚 Mais informações sobre o que foi feito em cada Sprints:
 
-## :hourglass_flowing_sand: Planejamento de Entregas
->  **SPRINT 1**
+### [*Sprint 1*](https://github.com/apibanco/Vigilant/tree/main/Sprints/1ª%20Sprint) - 08/09/2021 a 19/09/2021 (Finalizado)
+ 
+### [*Sprint 2*](https://github.com/apibanco/Vigilant/tree/main/Sprints/2ª%20Sprint) - 20/09/2021 a 10/10/2021 (Finalizado)
 
-<img height="160"  src="https://github.com/imagemrepositorio/Imagens/blob/main/Vigilant/1%20Sprint.png">
-
-#
-
-### :arrows_clockwise: Wireframes
-<img height="260" src="https://github.com/imagemrepositorio/Imagens/blob/main/Vigilant/Wireframe.bmp">
-<img height="260" src="https://github.com/imagemrepositorio/Imagens/blob/main/Vigilant/Wireframe1.bmp">
+### *Sprint 3* - 18/10/2021 a 07/11/2021
 	  
 #
-	  
-## :bar_chart: User Stories
-<img height="260" src="https://github.com/imagemrepositorio/Imagens/blob/main/Vigilant/Stories.bmp">
-
-#
-
-## 🎞 Vídeos
-
-**SPRINT 1**
-	  
-https://user-images.githubusercontent.com/81338441/133531359-f5897aed-1882-4c45-940b-7bb2bd08e47d.mp4
