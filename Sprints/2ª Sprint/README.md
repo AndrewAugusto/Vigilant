@@ -10,4 +10,4 @@
 ----
 
 ## *Burndown*
-<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/2ª%20Sprint/Img/Burndown.png" width="800px">
+<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/2ª%20Sprint/Img/Captura%20de%20Tela%20(1002).png" width="900px">
