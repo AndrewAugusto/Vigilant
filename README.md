@@ -75,9 +75,9 @@
 #
 
 ### 🖥 Instruções para instalação da aplicação
- #### Para Visualização e Download do guia de instalação acesse [*Aqui*](https://docs.google.com/document/d/1oIvps0D2kzYn9-PeLGA56a1cMu_ZzaRH/edit?usp=sharing&ouid=106581453796063208866&rtpof=true&sd=true)
+ #### Para Visualização e Download do guia de instalação clique [*Aqui*](https://docs.google.com/document/d/1oIvps0D2kzYn9-PeLGA56a1cMu_ZzaRH/edit?usp=sharing&ouid=106581453796063208866&rtpof=true&sd=true)
  
- #### Para Download do Executavel acesse [*Aqui*](https://drive.google.com/file/d/1d4V-EzHxaxh3G8VkXB5Cu5WinaPU7UZk/view?usp=sharing)
+ #### Para Download do Executavel clique [*Aqui*](https://drive.google.com/file/d/1d4V-EzHxaxh3G8VkXB5Cu5WinaPU7UZk/view?usp=sharing)
 
 #
 
