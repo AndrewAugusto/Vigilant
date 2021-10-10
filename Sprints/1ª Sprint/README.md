@@ -1,29 +1,14 @@
 ## 1ª Sprint
 
-<img src="https://github.com/criskurim/CodeYCode/blob/main/Imagens/logo-removebg-preview.png" width="150px" >
+<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/1ª%20Sprint/Img/Vigilant.png" width="150px" >
 
 ----
 
 ### *Backlog*:
-- Tela de login com E-mail e Usuário
-- Criação de função de busca de páginas de apostas
-- Tela de Página Inicial
-- Criação do protótipo
-- Criação da Página GitHub
+<img src="https://github.com/imagemrepositorio/Imagens/blob/main/Vigilant/1%20Sprint.png" width="600px">
 
 ----
 
-## *Card* 
-<img src="https://github.com/criskurim/CodeYCode/blob/main/Sprints/1ª%20Sprint/Card%201.png" width="800px" >
+## *Prototipo Inicial*:
 
-----
-
-## Prototipo da Assistente Virtual - IBET
-
-[*Prototipo do Aplicativo (Figma)*](https://www.figma.com/file/FreSegpVaDeGePlIaTzdrN/Protótipo-PI)
-
-
-----
-
-## *Tela de Login*
-<img src="https://github.com/criskurim/CodeYCode/blob/main/Sprints/1ª%20Sprint/Tela%20inicial.gif" width="800px">
+https://user-images.githubusercontent.com/81338441/133531359-f5897aed-1882-4c45-940b-7bb2bd08e47d.mp4
