@@ -30,7 +30,7 @@ public class LoginController {
 		caminho = "jdbc:postgresql://localhost:" + porta + "/" + banco;
 		
 		//SQLite
-		//caminholite = "jdbc:sqlite:banco_de_dados/banco_sqlite.db";
+		caminholite = "jdbc:sqlite:banco_de_dados/banco_sqlite.db";
 	}
 
 	public static LoginModel PreencherLogin() {

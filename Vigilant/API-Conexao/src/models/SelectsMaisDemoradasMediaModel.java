@@ -6,14 +6,6 @@ public class SelectsMaisDemoradasMediaModel {
 	String tempoMedio;
 	String data;
 
-	public String getCalls() {
-		return calls;
-	}
-
-	public void setCalls(String calls) {
-		this.calls = calls;
-	}
-
 	public String getData() {
 		return data;
 	}

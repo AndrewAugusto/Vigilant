@@ -79,7 +79,7 @@ public class ObterMetricas {
 	}
 
 	//# Select de Informações do Tamanho dos Bancos
-	public ArrayList<TamanhoBancos> TamanhoBanco() {
+	ArrayList<TamanhoBancos> TamanhoBanco() {
 		String sql = "SELECT pg_database.datname, pg_size_pretty(pg_database_size(pg_database.datname)),current_timestamp(0) AS size FROM pg_database;";		
 
 		try {
@@ -88,13 +88,21 @@ public class ObterMetricas {
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<TamanhoBancos> lista = new ArrayList<TamanhoBancos>();
 
+			String query = "INSERT INTO TamanhoBanco (datname,pg_size_pretty,size)VALUES (?, ?, ?)";
+			PreparedStatement st = in.prepareStatement(query);
+			
 			while (result.next()) {
-				TamanhoBancos tamBan = new TamanhoBancos();
+				TamanhoBancos tamTab = new TamanhoBancos();
 
-				tamBan.setNome(result.getString("datname"));
-				tamBan.setTamanho(result.getString("pg_size_pretty"));
-				tamBan.setData(result.getString("size"));
-				lista.add(tamBan);
+				tamTab.setNome(result.getString("datname"));
+				tamTab.setTamanho(result.getString("pg_size_pretty"));
+				tamTab.setData(result.getString("size"));
+				lista.add(tamTab);
+				
+				st.setString(1, tamTab.getNome());
+				st.setString(2, tamTab.getTamanho());
+				st.setString(3, tamTab.getData());
+				st.executeUpdate();	
 			}
 			return lista;
 		} catch (SQLException e) {
@@ -104,46 +112,35 @@ public class ObterMetricas {
 		}
 	}
 
-	//# Select de Informações das Tabelas dos Bancos
-	public ArrayList<TamanhoTabelasModel> TamanhoTabelas() {
-
-		String sql = " SELECT tabela, pg_size_pretty(pg_total_relation_size(esq_tab)), current_timestamp(0) AS tamanho"
-				+ "FROM (SELECT tablename AS tabela, schemaname||'.'||tablename AS esq_tab"
-				+ "FROM pg_catalog.pg_tables"
-				+ "WHERE schemaname NOT"
-				+ "IN ('pg_catalog', 'information_schema', 'pg_toast') ) AS x"
-				+ "ORDER BY pg_total_relation_size(esq_tab) DESC;";
+	// ** Select de Informações das Tabelas dos Bancos **
+	ArrayList<TamanhoTabelasModel> TamanhoTabelas() {
+		String sql = "SELECT tabela, pg_size_pretty(pg_total_relation_size(esq_tab)),"
+					+" current_timestamp(0) AS date FROM (SELECT tablename AS tabela, "
+					+"schemaname||'.'||tablename AS esq_tab FROM pg_catalog.pg_tables "
+					+"WHERE schemaname NOT IN ('pg_catalog', 'information_schema', 'pg_toast') ) "
+					+"AS x ORDER BY pg_total_relation_size(esq_tab) DESC;";
 
 		try {
 			iniciarConexao();
 			PreparedStatement pesquisa = con.prepareStatement(sql);
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<TamanhoTabelasModel> lista = new ArrayList<TamanhoTabelasModel>();
-
-			String query = "INSERT INTO Users ("
-				    + " tabela,"
-				    + " pg_size_pretty,"
-				    + " tamanho,"
-				    + " lastname,"
-				    + " companyname,"
-				    + " email_addr,"
-				    + " want_privacy ) VALUES ("
-				    + "null, ?, ?, ?, ?, ?, ?)";
 			
-			//PreparedStatement st = in.prepareStatement(query);
+			String query = "INSERT INTO TamanhoTabela (tabela,pg_size_pretty,data)VALUES (?, ?, ?)";
+			PreparedStatement st = in.prepareStatement(query);
 			
 			while (result.next()) {
 				TamanhoTabelasModel tamTab = new TamanhoTabelasModel();
 
 				tamTab.setNome(result.getString("tabela"));
 				tamTab.setTamanhoTotal(result.getString("pg_size_pretty"));
-				tamTab.setData(result.getString("tamanho"));
+				tamTab.setData(result.getString("date"));
 				lista.add(tamTab);
 				
-				/*st.setString(1, tamTab.getNome());
+				st.setString(1, tamTab.getNome());
 				st.setString(2, tamTab.getTamanhoTotal());
 				st.setString(3, tamTab.getData());
-				st.executeUpdate();*/
+				st.executeUpdate();	
 				
 			}
 			return lista;
@@ -154,7 +151,7 @@ public class ObterMetricas {
 		}
 	}
 
-	public ArrayList<SelectsChamadas1000xModel> SelectsChamadas1000x() {
+	ArrayList<SelectsChamadas1000xModel> SelectsChamadas1000x() {
 
 		String sql = "SELECT calls, SUBSTRING (query FROM 1 for 50), total_exec_time, current_timestamp (0)"
 				+ " FROM pg_stat_statements where calls > 100;";
@@ -165,16 +162,25 @@ public class ObterMetricas {
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<SelectsChamadas1000xModel> lista = new ArrayList<SelectsChamadas1000xModel>();
 			Double num;
+			
+			String query = "INSERT INTO ChamadasMuitas (calls,subtring,current_timestamp,total_exec_time)VALUES (?, ?, ?, ?)";
+			PreparedStatement st = in.prepareStatement(query);
 
 			while (result.next()) {
-				SelectsChamadas1000xModel selects = new SelectsChamadas1000xModel();
-				selects.setCalls(result.getString("calls"));
-				selects.setQuery(result.getString("substring"));
-				selects.setDate(result.getString("current_timestamp"));
+				SelectsChamadas1000xModel tamTab = new SelectsChamadas1000xModel();
+				tamTab.setCalls(result.getString("calls"));
+				tamTab.setQuery(result.getString("substring"));
+				tamTab.setDate(result.getString("current_timestamp"));
 				DecimalFormat df = new DecimalFormat("####.00");
 				num = Double.parseDouble(result.getString("total_exec_time"));
-				selects.setTotal_exec_time(df.format(num).toString());
-				lista.add(selects);
+				tamTab.setTotal_exec_time(df.format(num).toString());
+				lista.add(tamTab);
+				
+				st.setString(1, tamTab.getCalls());
+				st.setString(2, tamTab.getQuery());
+				st.setString(3, tamTab.getDate());
+				st.setString(4, tamTab.getTotal_exec_time());
+				st.executeUpdate();
 			}
 			return lista;
 		} catch (SQLException e) {
@@ -184,7 +190,7 @@ public class ObterMetricas {
 		}
 	}
 
-	public List<SelectMaisDemoradasModel> SelectMaisDemoradas() {
+	List<SelectMaisDemoradasModel> SelectMaisDemoradas() {
 
 		String sql = "SELECT SUBSTRING (query FROM 1 for 50), total_exec_time, current_timestamp(0) \n"
 				+ " FROM pg_stat_statements ORDER BY total_exec_time DESC LIMIT 10;";
@@ -195,16 +201,24 @@ public class ObterMetricas {
 			ResultSet result = pesquisa.executeQuery();
 			List<SelectMaisDemoradasModel> lista = new LinkedList<SelectMaisDemoradasModel>();
 			Double num;
+			
+			String query = "INSERT INTO SelectsDemoradas (substring,current_timestamp,total_exec_time)VALUES (?, ?, ?)";
+			PreparedStatement st = in.prepareStatement(query);
 
 			while (result.next()) {
-				SelectMaisDemoradasModel selects = new SelectMaisDemoradasModel();
+				SelectMaisDemoradasModel tamTab = new SelectMaisDemoradasModel();
 
-				selects.setQuery(result.getString("substring"));
-				selects.setData(result.getString("current_timestamp"));
+				tamTab.setQuery(result.getString("substring"));
+				tamTab.setData(result.getString("current_timestamp"));
 				DecimalFormat df = new DecimalFormat("####.00");
 				num = Double.parseDouble(result.getString("total_exec_time"));
-				selects.setTempo(df.format(num).toString());
-				lista.add(selects);
+				tamTab.setTempo(df.format(num).toString());
+				lista.add(tamTab);
+				
+				st.setString(1, tamTab.getQuery());
+				st.setString(2, tamTab.getData());
+				st.setString(3, tamTab.getTempo());
+				st.executeUpdate();
 			}
 			return lista;
 		} catch (SQLException e) {
@@ -214,7 +228,7 @@ public class ObterMetricas {
 		}
 	}
 
-	public ArrayList<SelectsMaisDemoradasMediaModel> SelectsMaisDemoradasMedia() {
+	ArrayList<SelectsMaisDemoradasMediaModel> SelectsMaisDemoradasMedia() {
 
 		String sql = "SELECT SUBSTRING (query FROM 1 for 50), mean_exec_time, current_timestamp (0) FROM pg_stat_statements ORDER BY "
 				+ "mean_exec_time DESC LIMIT 10;";
@@ -225,16 +239,24 @@ public class ObterMetricas {
 			ResultSet result = pesquisa.executeQuery();
 			ArrayList<SelectsMaisDemoradasMediaModel> lista = new ArrayList<SelectsMaisDemoradasMediaModel>();
 			Double num;
+			
+			String query = "INSERT INTO SelectsDemoradasMedia (substring,current_timestamp,mean_exec_time)VALUES (?, ?, ?)";
+			PreparedStatement st = in.prepareStatement(query);
 
 			while (result.next()) {
 
-				SelectsMaisDemoradasMediaModel selects = new SelectsMaisDemoradasMediaModel();
-				selects.setQuery(result.getString("substring"));
-				selects.setData(result.getString("current_timestamp"));
+				SelectsMaisDemoradasMediaModel tamTab = new SelectsMaisDemoradasMediaModel();
+				tamTab.setQuery(result.getString("substring"));
+				tamTab.setData(result.getString("current_timestamp"));
 				DecimalFormat df = new DecimalFormat("####.00");
 				num = Double.parseDouble(result.getString("mean_exec_time"));
-				selects.setTempoMedio(df.format(num).toString());
-				lista.add(selects);
+				tamTab.setTempoMedio(df.format(num).toString());
+				lista.add(tamTab);
+				
+				st.setString(1, tamTab.getQuery());
+				st.setString(2, tamTab.getData());
+				st.setString(3, tamTab.getTempoMedio());
+				st.executeUpdate();
 			}
 			return lista;
 		} catch (SQLException e) {
@@ -244,7 +266,7 @@ public class ObterMetricas {
 		}
 	}
 	
-	public List<SelectConflictsModel> SelectConflicts() {
+	List<SelectConflictsModel> SelectConflicts() {
 
 		String sql = "SELECT datname, confl_lock, confl_deadlock, current_timestamp (0) FROM pg_stat_database_conflicts;";
 
@@ -253,15 +275,24 @@ public class ObterMetricas {
 			PreparedStatement pesquisa = con.prepareStatement(sql);
 			ResultSet result = pesquisa.executeQuery();
 			List<SelectConflictsModel> lista = new LinkedList<SelectConflictsModel>();
+			
+			String query = "INSERT INTO SelectsConflicts (datname,Confl_lock,confl_deadlock,current_timestamp)VALUES (?, ?, ?, ?)";
+			PreparedStatement st = in.prepareStatement(query);
 
 			while (result.next()) {
-				SelectConflictsModel selects = new SelectConflictsModel();
+				SelectConflictsModel tamTab = new SelectConflictsModel();
 
-				selects.setName(result.getString("datname"));
-				selects.setTempo(result.getString("current_timestamp"));
-				selects.setConfl(result.getString("confl_lock"));
-				selects.setConfl_dead(result.getString("confl_deadlock"));
-				lista.add(selects);
+				tamTab.setName(result.getString("datname"));
+				tamTab.setTempo(result.getString("current_timestamp"));
+				tamTab.setConfl(result.getString("confl_lock"));
+				tamTab.setConfl_dead(result.getString("confl_deadlock"));
+				lista.add(tamTab);
+				
+				st.setString(1, tamTab.getName());
+				st.setString(2, tamTab.getConfl());
+				st.setString(3, tamTab.getConfl_dead());
+				st.setString(4, tamTab.getTempo());
+				st.executeUpdate();
 			}
 			return lista;
 		} catch (SQLException e) {

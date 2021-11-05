@@ -49,11 +49,10 @@ public class ImprimeMetricas {
 		ObterMetricas obterMetricas2 = new ObterMetricas(loginModel);
 		List<SelectsMaisDemoradasMediaModel> selectsMaisDemoradasMedia = obterMetricas2.SelectsMaisDemoradasMedia();
 		for (SelectsMaisDemoradasMediaModel selectsMaisDemoradasMediaModel : selectsMaisDemoradasMedia) {
-			String calls = selectsMaisDemoradasMediaModel.getCalls();
 			String date = selectsMaisDemoradasMediaModel.getData();
 			String query = selectsMaisDemoradasMediaModel.getQuery();
 			String time_avar = selectsMaisDemoradasMediaModel.getTempoMedio();
-			System.out.println(calls + " | " + query + " | " + time_avar + " | " + date);
+			System.out.println(query + " | " + time_avar + " | " + date);
 		}
 	}
 
