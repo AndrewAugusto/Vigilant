@@ -18,7 +18,7 @@ public class Principal {
 	}
 	// Iniciando o menu para selecionar métricas
 
-	public void imprimirSelectMaisDemoradas(){
+	/*public void imprimirSelectMaisDemoradas(){
 				  LoginModel loginModel = null;
 						// ** Métricas de Querys Mais Demoradas **
 						ObterMetricas obterMetricas = new ObterMetricas(loginModel);
@@ -66,7 +66,7 @@ public class Principal {
 							String nome = tamanhobancos.getNome();
 							String size = tamanhobancos.getTamanho();
 							String date = tamanhobancos.getData();
-							System.out.println(nome +" | "+ size +" | "+ date);
+							System.out.println(nome +" ##########| "+ size +" ##########| "+ date);
 						}}
 
 	public void tamanhoTabelas() {
@@ -79,6 +79,6 @@ public class Principal {
 							String size = tamanhoTabelasModel.getTamanhoTotal();
 							String date = tamanhoTabelasModel.getData();
 							System.out.println(nome +" | "+ size +" | "+ date);
-						}}
+						}}*/
 
 }

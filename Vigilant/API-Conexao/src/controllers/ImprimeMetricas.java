@@ -61,10 +61,12 @@ public class ImprimeMetricas {
 		ObterMetricas obterMetricas3 = new ObterMetricas(loginModel);
 		List<TamanhoBancos> tamanhobancos1 = obterMetricas3.TamanhoBanco();
 		for (TamanhoBancos tamanhobancos : tamanhobancos1) {
+			for(int x=1 ; x<5 ; x++) {
 			String nome = tamanhobancos.getNome();
 			String size = tamanhobancos.getTamanho();
 			String date = tamanhobancos.getData();
-			System.out.println(nome + " | " + size + " | " + date);
+			System.out.println(nome + " ********| " + size + " ********| " + date);
+			}
 		}
 	}
 
