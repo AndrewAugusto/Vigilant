@@ -2,6 +2,8 @@ package controllers;
 
 public class SQLRunTimeException extends RuntimeException {
 
+	private static final long serialVersionUID = 1L;
+
 	public SQLRunTimeException() {
 		
 	}

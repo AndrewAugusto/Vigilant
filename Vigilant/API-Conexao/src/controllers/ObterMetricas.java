@@ -19,7 +19,6 @@ import models.TamanhoBancos;
 import models.TamanhoTabelasModel;
 
 public class ObterMetricas {
-	private String driver = "org.postgresql.Driver";
 	private String caminho;
 	private String caminholite;
 	private String porta;
@@ -37,12 +36,10 @@ public class ObterMetricas {
 
 		caminho = "jdbc:postgresql://localhost:" + porta + "/" + banco;
 		
-		caminholite = "jdbc:sqlite:banco_de_dados/banco_sqlite.db";
-	}
+		caminholite = "jdbc:sqlite:C:\\banco_sqlite.db\\";
+	}	
 
-	public void iniciarConexao() throws SQLException {
-		
-		//System.setProperty("jdbc.drivers","org.postgresql.Driver:org.sqlite.JDBC" );		
+	public void iniciarConexao() throws SQLException {		
 		
 		//Conexão do PostgreSQL
 		try {
@@ -79,7 +76,7 @@ public class ObterMetricas {
 	}
 
 	//# Select de Informações do Tamanho dos Bancos
-	ArrayList<TamanhoBancos> TamanhoBanco() {
+	public ArrayList<TamanhoBancos> TamanhoBanco() {
 		String sql = "SELECT pg_database.datname, pg_size_pretty(pg_database_size(pg_database.datname)),current_timestamp(0) AS size FROM pg_database;";		
 
 		try {

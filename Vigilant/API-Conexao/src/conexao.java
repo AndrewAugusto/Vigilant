@@ -149,6 +149,5 @@ public class conexao {
 	
 	
 	public static void main(String[] args) {
-		conexao con = new conexao();
 	}
 }
