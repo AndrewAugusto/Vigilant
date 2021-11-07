@@ -77,7 +77,7 @@
 ### 🖥 Instruções para instalação da aplicação
  #### Para Visualização e Download do guia de instalação clique [*Aqui*](https://docs.google.com/document/d/1oIvps0D2kzYn9-PeLGA56a1cMu_ZzaRH/edit?usp=sharing&ouid=106581453796063208866&rtpof=true&sd=true)
  
- #### Para Download do Executavel clique [*Aqui*](https://drive.google.com/file/d/1d4V-EzHxaxh3G8VkXB5Cu5WinaPU7UZk/view?usp=sharing)
+ #### Para Download do Executavel clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Executavel%20do%20Projeto)
 
 #
 
@@ -120,10 +120,12 @@ SGBDs, databases e na sua infra (Servidores)
 	  
 ### 📚 Mais informações sobre o que foi feito em cada Sprints:
 
-### *Sprint 1* - 08/09/2021 a 19/09/2021 (Finalizado) - [*Clique Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/1ª%20Sprint)
+### *Sprint 1* - 08/09/2021 a 19/09/2021 (Finalizado) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/1ª%20Sprint)
  
-### *Sprint 2* - 20/09/2021 a 10/10/2021 (Finalizado) - [*Clique Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/2ª%20Sprint)
+### *Sprint 2* - 20/09/2021 a 10/10/2021 (Finalizado) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/2ª%20Sprint)
 
-### *Sprint 3* - 18/10/2021 a 07/11/2021
+### *Sprint 3* - 18/10/2021 a 07/11/2021 (Finalizado) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/3ª%20Sprint)
+	  
+### *Sprint 4* - 08/11/2021 a 28/11/2021 
 	  
 #
