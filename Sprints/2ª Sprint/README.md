@@ -7,7 +7,7 @@
 ----
 
 ### *Backlog:*
-<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/2ª%20Sprint/Img/Captura%20de%20Tela%20(999).png" width="600px" >
+<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/2ª%20Sprint/Img/Captura%20de%20Tela%20(999).png" width="800px" >
 
 ----
 
