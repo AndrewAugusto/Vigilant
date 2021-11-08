@@ -1,4 +1,4 @@
-# Projeto Integrador - Necto Systems
+# Projeto Integrador (*Vigilant*) - Necto Systems
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/80851038/133914328-794317fa-31e1-4279-afb0-d986acb5db45.png" alt="800" width="400"/>
@@ -6,7 +6,7 @@
 
 #
 
-### Grupo:
+### *Equipe Alpha*:
 
 :boy: Andrew Augusto Dias Santos (Scrum Master) - 
 <a href="https://github.com/AndrewAugusto">
@@ -74,14 +74,14 @@
 
 #
 
-### 🖥 Instruções para instalação da aplicação
+### 🖥 *Instruções para instalação da aplicação*
  #### Para Visualização e Download do guia de instalação clique [*Aqui*](https://docs.google.com/document/d/1oIvps0D2kzYn9-PeLGA56a1cMu_ZzaRH/edit?usp=sharing&ouid=106581453796063208866&rtpof=true&sd=true)
  
  #### Para Download do Executavel clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Executavel%20do%20Projeto)
 
 #
 
-### ✅ Descrição Do Projeto
+### ✅ *Descrição Do Projeto*
 Desenvolvido para uma aplicação de gráficos onde exibe dados do cliente e avisos em casos de emergência.
 Nossa missão é desenvolver uma aplicação para coletar métricas periodicamente de um ou mais Sistemas Gerenciadores
 de Banco de Dados remoto, exibir gráficos e alertas de comprometimento do espaço em disco ou de qualquer outro problema 
@@ -91,7 +91,7 @@ SGBDs, databases e na sua infra (Servidores)
 
 #
 
-### ✅ Requisitos do Projeto
+### ✅ *Requisitos do Projeto*
  **Requisitos Funcionais:**
 - Registros periódicos de métricas (diariamente / hora)
 - Disponibilidade de dados coletados em tempo real
@@ -105,7 +105,7 @@ SGBDs, databases e na sua infra (Servidores)
 
 #
 
-### :computer: Tecnologias Utilizadas
+### :computer: *Tecnologias Utilizadas*
 <div style="display: inline_block"><br>
   <p align="center">
  <img title="Java" height="120" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg">
@@ -118,7 +118,7 @@ SGBDs, databases e na sua infra (Servidores)
 
 #
 	  
-### 📚 Mais informações sobre o que foi feito em cada Sprints:
+### 📚 *Mais Informações Sobre Cada Sprints:*
 
 ### *Sprint 1* - 08/09/2021 a 19/09/2021 (Finalizado) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/1ª%20Sprint)
  
@@ -126,6 +126,6 @@ SGBDs, databases e na sua infra (Servidores)
 
 ### *Sprint 3* - 18/10/2021 a 07/11/2021 (Finalizado) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/3ª%20Sprint)
 	  
-### *Sprint 4* - 08/11/2021 a 28/11/2021 
+### *Sprint 4* - 08/11/2021 a 28/11/2021 (Em Andamento) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/4ª%20Sprint)
 	  
 #
