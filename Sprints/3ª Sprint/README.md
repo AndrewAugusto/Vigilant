@@ -1,18 +1,20 @@
 ## *3ª Sprint*
 
-<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/3ª%20Sprint/Vigilant.png" width="150px" >
+----
+
+<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/3ª%20Sprint/img/Vigilant.png" width="150px" >
 
 ----
 
 ## *Backlog*:
-<img src="" width="600px" >
+<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/3ª%20Sprint/img/Sprint%203.png" width="800px" >
 
 ----
 
 ## *Burndown*
-<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/3ª%20Sprint/Burndown.png" width="900px">
+<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/3ª%20Sprint/img/Burndown.png" width="900px">
 
 ----
 
 ## *Programa*
-![Programa](https://github.com/apibanco/Vigilant/blob/main/Sprints/3ª%20Sprint/Programa.gif)
+![Programa](https://github.com/apibanco/Vigilant/blob/main/Sprints/3ª%20Sprint/img/Programa.gif)
