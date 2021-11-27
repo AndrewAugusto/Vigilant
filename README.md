@@ -1,7 +1,7 @@
-# Projeto Integrador (*Vigilant*) - Necto Systems
+# Projeto Integrador (*Vigilant*)
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/80851038/133914328-794317fa-31e1-4279-afb0-d986acb5db45.png" alt="800" width="400"/>
+<img src="https://user-images.githubusercontent.com/80851038/133914328-794317fa-31e1-4279-afb0-d986acb5db45.png" alt="300" width="150"/>
 </p>
 
 #
