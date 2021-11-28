@@ -1,8 +1,18 @@
 # Projeto Integrador (*Vigilant*)
 
+<div style="display: inline_block"><br>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/80851038/133914328-794317fa-31e1-4279-afb0-d986acb5db45.png" alt="300" width="150"/>
+<img src="https://github.com/apibanco/Vigilant/blob/main/Sprints/2ª%20Sprint/Img/Vigilant.png" alt="100" width="100"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+<img src="https://user-images.githubusercontent.com/80851038/133914328-794317fa-31e1-4279-afb0-d986acb5db45.png" alt="370" width="220"/>
 </p>
+
+#
+	
+### 🖥 *Instruções para execução do projeto*
+#### Para visualização e download do guia de instalação clique [*Aqui*](https://docs.google.com/document/d/1oIvps0D2kzYn9-PeLGA56a1cMu_ZzaRH/edit?usp=sharing&ouid=106581453796063208866&rtpof=true&sd=true)
+ 
+#### Para download do executavel clique [*Aqui*](https://drive.google.com/drive/folders/1a7iLbzn38eubw8QfP2uLYY2Dj_k411Uq?usp=sharing)
 
 #
 
@@ -74,20 +84,11 @@
 
 #
 
-### 🖥 *Instruções para instalação da aplicação*
- #### Para Visualização e Download do guia de instalação clique [*Aqui*](https://docs.google.com/document/d/1oIvps0D2kzYn9-PeLGA56a1cMu_ZzaRH/edit?usp=sharing&ouid=106581453796063208866&rtpof=true&sd=true)
- 
- #### Para Download do Executavel clique [*Aqui*](https://drive.google.com/drive/folders/1a7iLbzn38eubw8QfP2uLYY2Dj_k411Uq?usp=sharing)
-
-#
-
 ### ✅ *Descrição Do Projeto*
-Desenvolvido para uma aplicação de gráficos onde exibe dados do cliente e avisos em casos de emergência.
+Desenvolvido para uma aplicação de coleta de informações do servidor para geração de série histórica.
 Nossa missão é desenvolver uma aplicação para coletar métricas periodicamente de um ou mais Sistemas Gerenciadores
-de Banco de Dados remoto, exibir gráficos e alertas de comprometimento do espaço em disco ou de qualquer outro problema 
-que influenciem no funcionamento desses Sistemas e seus databases. Através desta ferramenta o usuário terá informações
-para tomar decisões quanto a necessidade de manutenções, balanceamento e aumento de capacidade e melhoria no seus 
-SGBDs, databases e na sua infra (Servidores)
+de Banco de Dados remoto. Através desta ferramenta o usuário terá informações para tomar decisões quanto a necessidade 
+de manutenções, balanceamento e aumento de capacidade e melhoria no seus SGBDs, databases e na sua infra (Servidores).
 
 #
 
@@ -126,6 +127,6 @@ SGBDs, databases e na sua infra (Servidores)
 
 ### *Sprint 3* - 18/10/2021 a 07/11/2021 (Finalizado) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/3ª%20Sprint)
 	  
-### *Sprint 4* - 08/11/2021 a 28/11/2021 (Em Andamento) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/4ª%20Sprint)
+### *Sprint 4* - 08/11/2021 a 28/11/2021 (Finalizado) - Clique [*Aqui*](https://github.com/apibanco/Vigilant/tree/main/Sprints/4ª%20Sprint)
 	  
 #
